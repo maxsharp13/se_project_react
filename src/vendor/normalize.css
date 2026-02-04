@@ -1,0 +1,14 @@
+html {
+    line-height: 1.15;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  button,
+  input,
+  select {
+    font-family: inherit;
+  }
+  

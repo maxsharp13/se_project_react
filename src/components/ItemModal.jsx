@@ -12,13 +12,13 @@ function ItemModal({ isOpen, onClose, card }) {
           className="modal__content"
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            type="button"
-            className="modal__close"
-            onClick={onClose}
-          >
-            ×
-          </button>
+       <button
+         type="button"
+          className="modal__close"
+          aria-label="Close modal"
+          onClick={onClose}
+        />
+
   
           <img
             src={card.link}

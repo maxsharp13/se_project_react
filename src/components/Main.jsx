@@ -1,5 +1,6 @@
 import "./Main.css";
-
+import "./vendor/normalize.css";
+import "./vendor/fonts.css";
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 
@@ -13,7 +14,7 @@ function Main({ clothingItems, onCardClick, weather }) {
 
   return (
     <main className="content">
-      {weather && (
+      {weather.temperature !== null && (
         <WeatherCard temperature={weather.temperature} />
       )}
 

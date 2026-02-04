@@ -1,35 +1,22 @@
-Features
+# WTWR — What To Wear (React)
 
-Real-time weather data from OpenWeather API
+WTWR is a React-based application that helps users decide what to wear
+based on current weather conditions. The app fetches real-time weather
+data from the OpenWeather API and filters clothing items so users get
+smart outfit recommendations for the day.
 
-Displays current temperature and city
+## Features
 
-Filters clothing cards based on weather conditions:
+- Interactive clothing cards with preview modal
+- Modal form for adding new garments (UI only)
+- ESC key & overlay click to close modals
+- Responsive layout based on Figma designs
+- Environment variables used for API keys
 
-Hot
+## Tech Stack
 
-Warm
-
-Cold
-
-Interactive clothing cards with preview modal
-
-Modal form for adding new garments (UI only)
-
-ESC key & overlay click to close modals
-
-Responsive layout based on Figma designs
-
-Environment variables used for API keys
-
-🛠️ Tech Stack
-
-React
-
-Vite
-
-JavaScript (ES6+)
-
-CSS (BEM methodology)
-
-OpenWeather API
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS (BEM methodology)
+- OpenWeather API

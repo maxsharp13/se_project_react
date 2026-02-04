@@ -21,13 +21,13 @@ function ModalWithForm({
         >
           <h2 className="modal__title">{title}</h2>
   
-          <button
+        <button
             type="button"
             className="modal__close"
+            aria-label="Close modal"
             onClick={onClose}
-          >
-            ×
-          </button>
+        />
+
   
           <form className="modal__form" name={name}>
             {children}
