@@ -1,6 +1,4 @@
 import "./Main.css";
-import "./vendor/normalize.css";
-import "./vendor/fonts.css";
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 
