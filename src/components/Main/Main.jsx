@@ -1,6 +1,6 @@
 import "./Main.css";
-import WeatherCard from "./WeatherCard";
-import ItemCard from "./ItemCard";
+import WeatherCard from "../WeatherCard/WeatherCard.jsx";
+import ItemCard from "../ItemCard/ItemCard.jsx";
 
 function Main({ clothingItems, onCardClick, weather }) {
   const filteredItems = weather.condition

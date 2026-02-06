@@ -5,13 +5,13 @@ import {
   getWeather,
   parseWeatherData,
   getWeatherCondition,
-} from "../utils/weatherApi";
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
-import ModalWithForm from "./ModalWithForm";
-import ItemModal from "./ItemModal";
-import { defaultClothingItems } from "../utils/clothingItems";
+} from "../../utils/weatherApi";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
+import { defaultClothingItems } from "../../utils/clothingItems";
 
 function App() {
   const [clothingItems] = useState(defaultClothingItems);
