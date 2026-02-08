@@ -6,11 +6,7 @@ function WeatherCard({ temperature }) {
     <section className="weather-card">
       <p className="weather-card__temp">{temperature}°F</p>
 
-      <img
-        src={sunnyImg}
-        alt="Sunny weather"
-        className="weather-card__image"
-      />
+      <img src={sunnyImg} alt="Sunny weather" className="weather-card__image" />
     </section>
   );
 }

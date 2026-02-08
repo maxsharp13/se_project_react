@@ -19,17 +19,11 @@ function ItemModal({ isOpen, onClose, card }) {
           onClick={onClose}
         />
 
-        <img
-          src={card.link}
-          alt={card.name}
-          className="item-modal__image"
-        />
+        <img src={card.link} alt={card.name} className="item-modal__image" />
 
         <div className="item-modal__info">
           <h2 className="item-modal__title">{card.name}</h2>
-          <p className="item-modal__weather">
-            Weather: {card.weather}
-          </p>
+          <p className="item-modal__weather">Weather: {card.weather}</p>
         </div>
       </div>
     </div>

@@ -1,54 +1,126 @@
 .modal {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal_is-opened {
-    display: flex;
-  }
-  
-  .modal__content {
-    background-color: white;
-    border-radius: 20px;
-    padding: 28px;
-    min-width: 360px;
-    max-width: 500px;
-    position: relative;
-  }
-  
-  .modal__close {
-    width: 24px;
-    height: 24px;
-    background: transparent;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  }
-  
-  .modal__close::before {
-    content: "×";
-    font-size: 22px;
-    line-height: 24px;
-  }
-  
-  
-  .modal__title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .modal__submit {
-    margin-top: 24px;
-    padding: 12px;
-    background-color: black;
-    color: white;
-    border-radius: 8px;
-  }
-  
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal_is-opened {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__content {
+  background: #fff;
+  width: 496px;
+  padding: 28px 28px 36px;
+  border-radius: 16px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.modal__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal__close::before,
+.modal__close::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #000;
+  top: 9px;
+  left: 0;
+}
+
+.modal__close::before {
+  transform: rotate(45deg);
+}
+
+.modal__close::after {
+  transform: rotate(-45deg);
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+
+  margin: 0 0 20px;
+}
+
+.modal__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+
+  padding: 8px 0;
+  font-size: 14px;
+  margin-top: 6px;
+  outline: none;
+}
+
+.modal__label_type_weather {
+  margin: 0 0 12px;
+}
+
+.modal__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 32px;
+}
+
+.modal__radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal__submit {
+  width: 120px;
+  height: 36px;
+
+  border-radius: 8px;
+  border: none;
+
+  background: #e5e5e5;
+  color: #aaa;
+
+  font-size: 14px;
+  cursor: not-allowed;
+}

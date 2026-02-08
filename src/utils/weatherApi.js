@@ -2,7 +2,7 @@ import { apikey, latitude, longitude } from "./constants";
 
 function getWeather() {
   return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apikey}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apikey}`,
   ).then((res) => {
     if (!res.ok) {
       return Promise.reject(`Error: ${res.status}`);

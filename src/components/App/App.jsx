@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { useState, useEffect } from "react";
 import {
   getWeather,
@@ -72,6 +71,7 @@ function App() {
       <Header
         onAddClick={handleOpenAddModal}
         city={weather.city}
+        avatar="src/assets/Ellipse 18.svg"
       />
 
       <Main
@@ -83,46 +83,43 @@ function App() {
       <Footer />
 
       <ModalWithForm
-  name="add-garment"
-  title="New garment"
-  buttonText="Add garment"
-  isOpen={activeModal === "add-garment"}
-  onClose={handleCloseModal}
->
-  <label className="modal__label">
-    Name
-    <input
-      type="text"
-      name="name"
-      className="modal__input"
-      required
-    />
-  </label>
+        name="add-garment"
+        title="New garment"
+        buttonText="Add garment"
+        isOpen={activeModal === "add-garment"}
+        onClose={handleCloseModal}
+      >
+        <label className="modal__label">
+          Name
+          <input type="text" name="name" className="modal__input" required />
+        </label>
 
-  <label className="modal__label">
-    Image URL
-    <input
-      type="url"
-      name="link"
-      className="modal__input"
-      required
-    />
-  </label>
+        <label className="modal__label">
+          Image URL
+          <input type="url" name="link" className="modal__input" required />
+        </label>
 
-  <label className="modal__label">
-    Weather
-    <select
-      name="weather"
-      className="modal__input"
-      required
-    >
-      <option value="">Select weather</option>
-      <option value="hot">Hot</option>
-      <option value="warm">Warm</option>
-      <option value="cold">Cold</option>
-    </select>
-  </label>
-</ModalWithForm>
+        <p className="modal__label modal__label_type_weather">
+          Select the weather type:
+        </p>
+
+        <div className="modal__radio-group">
+          <label className="modal__radio-label">
+            <input type="radio" name="weather" value="hot" required />
+            Hot
+          </label>
+
+          <label className="modal__radio-label">
+            <input type="radio" name="weather" value="warm" />
+            Warm
+          </label>
+
+          <label className="modal__radio-label">
+            <input type="radio" name="weather" value="cold" />
+            Cold
+          </label>
+        </div>
+      </ModalWithForm>
 
       <ItemModal
         isOpen={activeModal === "preview"}
