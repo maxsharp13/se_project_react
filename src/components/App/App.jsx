@@ -68,6 +68,7 @@ function App() {
 
   return (
     <div className="page">
+    <div className="page__wrapper">
       <Header
         onAddClick={handleOpenAddModal}
         city={weather.city}
@@ -81,6 +82,7 @@ function App() {
       />
 
       <Footer />
+    </div>
 
       <ModalWithForm
         name="add-garment"

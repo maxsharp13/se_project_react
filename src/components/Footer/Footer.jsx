@@ -3,8 +3,9 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <p className="footer__copyright">© {new Date().getFullYear()} WTWR</p>
-    </footer>
+    <span>© Developed by Max Sharpnack</span>
+    <span>{new Date().getFullYear()}</span>
+  </footer>
   );
 }
 

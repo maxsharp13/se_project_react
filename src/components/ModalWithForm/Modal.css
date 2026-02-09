@@ -112,15 +112,16 @@
 }
 
 .modal__submit {
-  width: 120px;
+  width: 124px;
   height: 36px;
-
-  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  border-radius: 4px;
   border: none;
-
-  background: #e5e5e5;
-  color: #aaa;
-
-  font-size: 14px;
-  cursor: not-allowed;
+  cursor: pointer;
+  margin-top: 24px;
 }
