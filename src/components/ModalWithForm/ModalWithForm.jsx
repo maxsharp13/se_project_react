@@ -1,6 +1,6 @@
 import "./ModalWithForm.css";
 
-function ItemModal({ isOpen, onClose, card, onDelete }) {
+function ModalWithForm({ isOpen, onClose, card, onDelete }) {
   if (!card) return null;
 
   const handleDeleteClick = () => {
@@ -48,4 +48,4 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
   );
 }
 
-export default ItemModal;
+export default ModalWithForm;
