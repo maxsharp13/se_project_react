@@ -1,0 +1,23 @@
+{
+    "items": [
+      {
+        "_id": "1",
+        "name": "Jacket",
+        "imageUrl": "https://images.unsplash.com/photo-1520975922284-9f0b62e37b23",
+        "weather": "cold"
+      },
+      {
+        "_id": "2",
+        "name": "T-Shirt",
+        "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+        "weather": "warm"
+      },
+      {
+        "_id": "3",
+        "name": "Shorts",
+        "imageUrl": "https://images.unsplash.com/photo-1593032465171-8b9b0d8a7f5e",
+        "weather": "hot"
+      }
+    ]
+  }
+  

@@ -1,12 +1,18 @@
+import { useContext } from "react";
 import "./WeatherCard.css";
-import sunnyImg from "../../assets/Group 120.svg";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function WeatherCard({ temperature }) {
+  const { currentTemperatureUnit } = useContext(
+    CurrentTemperatureUnitContext
+  );
+
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">{temperature}°F</p>
-
-      <img src={sunnyImg} alt="Sunny weather" className="weather-card__image" />
+      <p className="weather-card__temp">
+        {temperature[currentTemperatureUnit]}°
+        {currentTemperatureUnit}
+      </p>
     </section>
   );
 }

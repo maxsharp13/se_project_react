@@ -2,13 +2,13 @@
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
   background-color: #e9e9e9;
-  width: 100%;
-  height: 100%;
-  align-items: center;
+  height: 328px;
+  overflow: hidden;
+  cursor: pointer;
 }
+
+
 
 .card__image {
   height: 100%;

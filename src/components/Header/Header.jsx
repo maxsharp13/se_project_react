@@ -1,11 +1,8 @@
 import "./Header.css";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom";
 
 function Header({ onAddClick, city, avatar }) {
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
-
   const date = new Date().toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
@@ -14,12 +11,17 @@ function Header({ onAddClick, city, avatar }) {
   return (
     <header className="header">
       <div className="header__left">
-        <span className="header__logo">WTWR</span>
+      <Link to="/" className="header__logo">
+           WTWR
+      </Link>
+
 
         <span className="header__date-and-location">
           {date}, {city}
         </span>
       </div>
+
+      <ToggleSwitch />
 
       <div className="header__right">
         <button
@@ -29,12 +31,12 @@ function Header({ onAddClick, city, avatar }) {
         >
           + Add Clothes
         </button>
-
-        <div className="header__user">
+        <Link to="/profile" className="header__user">
           <span className="header__username">Jacques Cousteau</span>
 
           <img src={avatar} alt="User avatar" className="header__avatar" />
-        </div>
+        </Link>
+
       </div>
     </header>
   );

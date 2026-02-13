@@ -1,14 +1,21 @@
 import "./Modal.css";
 
-function ModalWithForm({ name, title, buttonText, isOpen, onClose, children }) {
+function ItemModal({ isOpen, onClose, card, onDelete }) {
+  if (!card) return null;
+
+  const handleDeleteClick = () => {
+    onDelete(card);
+  };
+
   return (
     <div
-      className={`modal modal_type_${name} ${isOpen ? "modal_is-opened" : ""}`}
+      className={`modal ${isOpen ? "modal_is-opened" : ""}`}
       onClick={onClose}
     >
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <h2 className="modal__title">{title}</h2>
-
+      <div
+        className="modal__content item-modal__content"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
           className="modal__close"
@@ -16,16 +23,29 @@ function ModalWithForm({ name, title, buttonText, isOpen, onClose, children }) {
           onClick={onClose}
         />
 
-        <form className="modal__form" name={name}>
-          {children}
+        <img
+          src={card.link}
+          alt={card.name}
+          className="item-modal__image"
+        />
 
-          <button type="submit" className="modal__submit">
-            {buttonText}
+        <div className="item-modal__info">
+          <h2 className="item-modal__title">{card.name}</h2>
+          <p className="item-modal__weather">
+            Weather: {card.weather}
+          </p>
+
+          <button
+            type="button"
+            className="item-modal__delete-button"
+            onClick={handleDeleteClick}
+          >
+            Delete item
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
 }
 
-export default ModalWithForm;
+export default ItemModal;
