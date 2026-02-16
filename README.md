@@ -20,3 +20,5 @@ smart outfit recommendations for the day.
 - JavaScript (ES6+)
 - CSS (BEM methodology)
 - OpenWeather API
+
+https://github.com/maxsharp13/se_project_react

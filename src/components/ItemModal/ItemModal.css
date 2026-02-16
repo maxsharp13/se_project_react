@@ -1,7 +1,6 @@
-.item-modal__content {
+.item-modal {
   background: #f3f3f3;
   border-radius: 16px;
-  padding: 0;
   max-width: 498px;
   width: 100%;
   overflow: hidden;
@@ -11,63 +10,69 @@
 .item-modal__image {
   width: 100%;
   height: 498px;
-  object-fit: contain;
-  background: #f3f3f3;
+  object-fit: cover;
 }
 
-.modal__close {
+.item-modal__close {
   position: absolute;
   top: 20px;
   right: 20px;
   width: 20px;
   height: 20px;
-
-  border: 2px solid #000;
   background: transparent;
+  border: none;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
 }
 
-.modal__close::before,
-.modal__close::after {
+.item-modal__close::before,
+.item-modal__close::after {
   content: "";
   position: absolute;
-  width: 14px;
+  width: 20px;
   height: 2px;
-  background-color: black;
+  background: white;
+  top: 9px;
+  left: 0;
 }
 
-.modal__close::before {
+.item-modal__close::before {
   transform: rotate(45deg);
 }
 
-.modal__close::after {
+.item-modal__close::after {
   transform: rotate(-45deg);
 }
 
-.item-modal__info {
+.item-modal__footer {
+  background: white;
   padding: 20px 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
+.item-modal__text {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-
-  background: white;
+  gap: 8px;
 }
 
 .item-modal__title {
   font-size: 24px;
   font-weight: 800;
-  margin: 0 0 8px;
-  font-family: "CabinetGrotesk", Georgia, serif;
+  margin: 0;
 }
 
 .item-modal__weather {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
+}
+
+.item-modal__delete {
+  background: none;
+  border: none;
+  color: #ff4d00;
+  font-weight: 600;
+  cursor: pointer;
 }
