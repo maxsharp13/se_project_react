@@ -106,13 +106,13 @@ function App() {
   useEffect(() => {
     getWeather()
       .then((data) => {
-        const parsed = parseWeatherData(data);
+        const weatherData = parseWeatherData(data);
         const condition = getWeatherCondition(
-          parsed.temperature.F
+          weatherData.temperature.F
         );
-
+  
         setWeather({
-          ...parsed,
+          ...weatherData,
           condition,
         });
       })
@@ -147,15 +147,16 @@ function App() {
               }
             />
 
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onAddClick={handleOpenAddModal}
-                />
-              }
-            />
+<Route
+  path="/profile"
+  element={
+    <Profile
+      clothingItems={clothingItems}
+      onAddClick={handleOpenAddModal}
+      onCardClick={handleCardClick}
+    />
+  }
+/>
           </Routes>
 
           <Footer />

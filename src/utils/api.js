@@ -9,20 +9,24 @@ export const getItems = () => {
   });
 };
 
-export const addItem = (item) => {
-  return fetch(`${baseUrl}/items`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(item),
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
-  });
-};
+export const addItem = ({ name, weather, imageUrl }) => {
+    return fetch(`${baseUrl}/items`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        weather,
+        imageUrl,
+      }),
+    }).then((res) => {
+      if (!res.ok) {
+        return Promise.reject(`Error: ${res.status}`);
+      }
+      return res.json();
+    });
+  }  
 
 export const deleteItem = (id) => {
     return fetch(`${baseUrl}/items/${id}`, {

@@ -3,7 +3,7 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-function Profile({ clothingItems, onAddClick }) {
+function Profile({ clothingItems, onAddClick, onCardClick }) {
   return (
     <section className="profile">
       <SideBar />
