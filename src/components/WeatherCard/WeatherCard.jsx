@@ -7,11 +7,13 @@ function WeatherCard({ temperature }) {
     CurrentTemperatureUnitContext
   );
 
+  const displayTemp =
+    temperature && temperature[currentTemperatureUnit];
+
   return (
     <section className="weather-card">
       <p className="weather-card__temp">
-        {temperature[currentTemperatureUnit]}°
-        {currentTemperatureUnit}
+        {displayTemp !== undefined ? `${displayTemp}°${currentTemperatureUnit}` : "--"}
       </p>
     </section>
   );

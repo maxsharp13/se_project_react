@@ -9,29 +9,26 @@ function Main({ clothingItems, onCardClick, weather }) {
     CurrentTemperatureUnitContext
   );
 
-  const filteredItems =
-  weather.condition && clothingItems.length
-    ? clothingItems.filter(
-        (item) =>
-          item.weather &&
-          item.weather.toLowerCase().trim() ===
-            weather.condition.toLowerCase().trim()
-      )
-    : clothingItems;
+  console.log("Weather condition:", weather.condition);
+  console.log("All item weather values:", clothingItems.map(i => i.weather));
+  
+
+  const filteredItems = clothingItems;
+
 
 
   return (
     <main className="content">
-      {weather.temperature && (
-        <>
-          <WeatherCard temperature={weather.temperature} />
+      <>
+  <WeatherCard temperature={weather.temperature} />
 
-          <p className="content__subtitle">
-            Today is {weather.temperature[currentTemperatureUnit]}°
-            {currentTemperatureUnit} / You may want to wear:
-          </p>
+  {weather.temperature && (
+    <p className="content__subtitle">
+      Today is {weather.temperature[currentTemperatureUnit]}°
+      {currentTemperatureUnit} / You may want to wear:
+    </p>
+       )}
         </>
-      )}
 
       <ul className="cards">
         {filteredItems.map((item) => (
