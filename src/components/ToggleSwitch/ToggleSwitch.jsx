@@ -6,26 +6,40 @@ function ToggleSwitch() {
   const { currentTemperatureUnit, handleToggleSwitchChange } =
     useContext(CurrentTemperatureUnitContext);
 
-  const isFahrenheit = currentTemperatureUnit === "F";
+  const isF = currentTemperatureUnit === "F";
 
   return (
     <label className="toggle">
       <input
         type="checkbox"
-        checked={!isFahrenheit}
-        onChange={handleToggleSwitchChange}
         className="toggle__input"
+        checked={!isF}
+        onChange={handleToggleSwitchChange}
       />
 
-      <span className="toggle__slider">
-        <span
+      <div className="toggle__slider">
+        <div
           className={`toggle__circle ${
-            isFahrenheit ? "toggle__circle--left" : "toggle__circle--right"
+            isF ? "toggle__circle--left" : "toggle__circle--right"
           }`}
         />
-        <span className="toggle__label toggle__label--left">F</span>
-        <span className="toggle__label toggle__label--right">C</span>
-      </span>
+
+        <span
+          className={`toggle__label ${
+            isF ? "toggle__label--active" : ""
+          }`}
+        >
+          F
+        </span>
+
+        <span
+          className={`toggle__label ${
+            !isF ? "toggle__label--active" : ""
+          }`}
+        >
+          C
+        </span>
+      </div>
     </label>
   );
 }

@@ -13,9 +13,13 @@ function Main({ clothingItems, onCardClick, weather }) {
   console.log("All item weather values:", clothingItems.map(i => i.weather));
   
 
-  const filteredItems = clothingItems;
-
-
+  const filteredItems = weather.condition
+  ? clothingItems.filter(
+      (item) =>
+        item.weather?.toLowerCase() ===
+        weather.condition.toLowerCase()
+    )
+  : [];
 
   return (
     <main className="content">
