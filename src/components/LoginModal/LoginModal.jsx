@@ -1,79 +1,63 @@
-import "./LoginModal.css";
-import { useState } from "react";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import useForm from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
-  const [form, setForm] = useState({
+  const { values, handleChange } = useForm({
     email: "",
     password: "",
   });
 
-  if (!isOpen) return null;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin(form);
+    onLogin(values);
   };
 
   return (
-    <div className="modal modal_is-opened" onClick={onClose}>
-      <div
-        className="modal__content"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <ModalWithForm
+      title="Log In"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      buttonText="Log In"
+    >
+      <label className="modal__label">
+        Email
+        <input
+          type="email"
+          name="email"
+          className="modal__input"
+          required
+          value={values.email}
+          onChange={handleChange}
+        />
+      </label>
+
+      <label className="modal__label">
+        Password
+        <input
+          type="password"
+          name="password"
+          className="modal__input"
+          required
+          value={values.password}
+          onChange={handleChange}
+        />
+      </label>
+
+      <div className="modal__actions">
+        <button type="submit" className="modal__submit">
+          Log In
+        </button>
+
         <button
           type="button"
-          className="modal__close"
-          onClick={onClose}
-        />
-
-        <h2 className="modal__title">Log In</h2>
-
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="modal__input"
-            required
-            value={form.email}
-            onChange={handleChange}
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="modal__input"
-            required
-            value={form.password}
-            onChange={handleChange}
-          />
-
-          <button type="submit" className="modal__submit">
-            Log In
-          </button>
-        </form>
-
-        <p className="modal__switch">
-          Not a member?{" "}
-          <button
-            className="modal__link"
-            onClick={onRegisterClick}
-          >
-            Sign up
-          </button>
-        </p>
+          className="modal__switch"
+          onClick={onRegisterClick}
+        >
+          or Sign Up
+        </button>
       </div>
-    </div>
+    </ModalWithForm>
   );
 }
 

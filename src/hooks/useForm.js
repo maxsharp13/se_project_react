@@ -1,22 +1,22 @@
 import { useState } from "react";
 
-function useForm(initialValues) {
+function useForm(initialValues = {}) {
   const [values, setValues] = useState(initialValues);
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
 
-    setValues({
-      ...values,
-      [name]: type === "radio" ? value : value,
-    });
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const resetForm = () => {
-    setValues(initialValues);
+  const setFormValues = (newValues) => {
+    setValues(newValues);
   };
 
-  return { values, handleChange, resetForm };
+  return { values, handleChange, setFormValues };
 }
 
 export default useForm;

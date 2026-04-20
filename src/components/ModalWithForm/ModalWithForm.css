@@ -1,127 +1,36 @@
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-.modal_is-opened {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.modal__content {
-  background: #fff;
-  width: 496px;
-  padding: 28px 28px 36px;
-  border-radius: 16px;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.modal__title {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 24px;
-}
-
-.modal__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  width: 20px;
-  height: 20px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
-
-.modal__close::before,
-.modal__close::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 2px;
-  background: #000;
-  top: 9px;
-  left: 0;
-}
-
-.modal__close::before {
-  transform: rotate(45deg);
-}
-
-.modal__close::after {
-  transform: rotate(-45deg);
-}
-
-.modal__form {
-  display: flex;
-  flex-direction: column;
-}
-
 .modal__label {
   display: flex;
   flex-direction: column;
-
-  font-size: 16px;
-  font-weight: 700;
-  color: #000;
-
-  margin: 0 0 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .modal__input {
-  width: 100%;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-
-  padding: 8px 0;
-  font-size: 14px;
-  margin-top: 6px;
+  border-bottom: 1px solid #000;
+  padding: 6px 0;
   outline: none;
 }
 
-.modal__label_type_weather {
-  margin: 0 0 12px;
-}
-
-.modal__radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0 0 32px;
-}
-
-.modal__radio-label {
+.modal__actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-
-  font-size: 14px;
-  font-weight: 500;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .modal__submit {
-  width: 124px;
-  height: 36px;
-  font-size: 16px;
+  padding: 8px 16px;
+  background: black;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  border-radius: 4px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 24px;
+}
+
+.modal__switch {
+  background: none;
+  border: none;
+  color: gray;
+  cursor: pointer;
 }

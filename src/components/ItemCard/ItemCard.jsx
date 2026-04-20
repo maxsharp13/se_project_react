@@ -5,9 +5,8 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
 
-
   const isLiked = item.likes?.some(
-    (id) => id === currentUser?._id
+    (like) => like === currentUser?._id || like._id === currentUser?._id,
   );
 
   const likeButtonClassName = `card__like-button ${
@@ -15,7 +14,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
   }`;
 
   const handleLikeClick = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     onCardLike({
       id: item._id,
       isLiked,
@@ -24,23 +23,21 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
 
   return (
     <li className="card" onClick={() => onCardClick(item)}>
-      <p className="card__name">{item.name}</p>
+      <div className="card__header">
+        <p className="card__name">{item.name}</p>
 
+        {isLoggedIn && (
+          <button
+            type="button"
+            className={likeButtonClassName}
+            onClick={handleLikeClick}
+          >
+            ♥
+          </button>
+        )}
+      </div>
 
-      {isLoggedIn && (
-        <button
-          className={likeButtonClassName}
-          onClick={handleLikeClick}
-        >
-          ♥
-        </button>
-      )}
-
-      <img
-        src={item.imageUrl}
-        alt={item.name}
-        className="card__image"
-      />
+      <img src={item.imageUrl} alt={item.name} className="card__image" />
     </li>
   );
 }

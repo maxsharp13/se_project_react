@@ -1,38 +1,55 @@
 .modal__content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  .modal__title {
-    margin-bottom: 15px;
-  }
-  
-  .modal__form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .modal__input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .modal__submit {
-    padding: 10px;
-    background: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .modal__link {
-    background: none;
-    border: none;
-    color: blue;
-    cursor: pointer;
-  }
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.modal__title {
+  margin-bottom: 15px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal__input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal__submit {
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal__link {
+  background: none;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+.modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal__switch {
+  background: none;
+  border: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}

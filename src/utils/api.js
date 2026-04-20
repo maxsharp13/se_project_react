@@ -1,6 +1,5 @@
 const baseUrl = "http://localhost:3001";
 
-
 export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
@@ -8,10 +7,8 @@ export const checkResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
-
 export const getItems = () => {
-  return fetch(`${baseUrl}/items`)
-    .then(checkResponse);
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 };
 
 export const addItem = ({ name, weather, imageUrl }, token) => {
@@ -38,7 +35,6 @@ export const deleteItem = (id, token) => {
   }).then(checkResponse);
 };
 
-
 export const addCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
@@ -56,7 +52,6 @@ export const removeCardLike = (id, token) => {
     },
   }).then(checkResponse);
 };
-
 
 export const updateUserProfile = ({ name, avatar }, token) => {
   return fetch(`${baseUrl}/users/me`, {

@@ -7,7 +7,6 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
 
   if (!isOpen || !card) return null;
 
-
   const isOwn = card.owner === currentUser?._id;
 
   const handleDeleteClick = () => {
@@ -16,15 +15,8 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
 
   return (
     <div className="modal modal_is-opened" onClick={onClose}>
-      <div
-        className="item-modal"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          type="button"
-          className="item-modal__close"
-          onClick={onClose}
-        />
+      <div className="item-modal" onClick={(e) => e.stopPropagation()}>
+        <button type="button" className="item-modal__close" onClick={onClose} />
 
         <img
           src={card.imageUrl}
@@ -35,9 +27,7 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
         <div className="item-modal__footer">
           <div className="item-modal__text">
             <h2 className="item-modal__title">{card.name}</h2>
-            <p className="item-modal__weather">
-              Weather: {card.weather}
-            </p>
+            <p className="item-modal__weather">Weather: {card.weather}</p>
           </div>
 
           {isOwn && (

@@ -3,8 +3,9 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import "./ToggleSwitch.css";
 
 function ToggleSwitch() {
-  const { currentTemperatureUnit, handleToggleSwitchChange } =
-    useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
+    CurrentTemperatureUnitContext,
+  );
 
   const isF = currentTemperatureUnit === "F";
 
@@ -24,18 +25,12 @@ function ToggleSwitch() {
           }`}
         />
 
-        <span
-          className={`toggle__label ${
-            isF ? "toggle__label--active" : ""
-          }`}
-        >
+        <span className={`toggle__label ${isF ? "toggle__label--active" : ""}`}>
           F
         </span>
 
         <span
-          className={`toggle__label ${
-            !isF ? "toggle__label--active" : ""
-          }`}
+          className={`toggle__label ${!isF ? "toggle__label--active" : ""}`}
         >
           C
         </span>

@@ -29,11 +29,7 @@ function Header({
     <header className="header">
       <div className="header__left">
         <Link to="/" className="header__logo">
-          <img
-            src={logo}
-            alt="WTWR logo"
-            className="header__logo-image"
-          />
+          <img src={logo} alt="WTWR logo" className="header__logo-image" />
         </Link>
 
         <span className="header__date-location">
@@ -55,9 +51,7 @@ function Header({
             </button>
 
             <Link to="/profile" className="header__profile">
-              <span className="header__username">
-                {currentUser?.name}
-              </span>
+              <span className="header__username">{currentUser?.name}</span>
 
               {currentUser?.avatar ? (
                 <img
@@ -66,32 +60,21 @@ function Header({
                   className="header__avatar"
                 />
               ) : (
-                <div className="header__avatar-placeholder">
-                  {userInitial}
-                </div>
+                <div className="header__avatar-placeholder">{userInitial}</div>
               )}
             </Link>
 
-            <button
-              className="header__logout-button"
-              onClick={onSignOut}
-            >
+            <button className="header__logout-button" onClick={onSignOut}>
               Sign Out
             </button>
           </>
         ) : (
           <>
-            <button
-              className="header__auth-button"
-              onClick={onRegisterClick}
-            >
+            <button className="header__auth-button" onClick={onRegisterClick}>
               Sign Up
             </button>
 
-            <button
-              className="header__auth-button"
-              onClick={onLoginClick}
-            >
+            <button className="header__auth-button" onClick={onLoginClick}>
               Log In
             </button>
           </>

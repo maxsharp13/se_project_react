@@ -1,16 +1,15 @@
 .sidebar {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .sidebar__avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-  }
-  
-  .sidebar__username {
-    font-weight: 700;
-    font-size: 20px;
-  }
-  
+  display: flex;
+  gap: 16px;
+}
+
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.sidebar__username {
+  font-weight: 700;
+  font-size: 20px;
+}

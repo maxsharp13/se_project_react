@@ -115,7 +115,7 @@ function App() {
     deleteItem(card._id, token)
       .then(() => {
         setClothingItems((prev) =>
-          prev.filter((item) => item._id !== card._id)
+          prev.filter((item) => item._id !== card._id),
         );
         handleCloseModal();
       })
@@ -132,9 +132,7 @@ function App() {
     request
       .then((updatedCard) => {
         setClothingItems((items) =>
-          items.map((item) =>
-            item._id === id ? updatedCard : item
-          )
+          items.map((item) => (item._id === id ? updatedCard : item)),
         );
       })
       .catch(console.error);
@@ -213,7 +211,7 @@ function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Profile
                   clothingItems={clothingItems.filter(
-                    (i) => i.owner === currentUser._id
+                    (i) => i.owner === currentUser._id,
                   )}
                   onAddClick={() => setActiveModal("add")}
                   onCardClick={handleCardClick}
