@@ -132,7 +132,7 @@ function App() {
     request
       .then((updatedCard) => {
         setClothingItems((items) =>
-          items.map((item) => (item._id === id ? updatedCard : item)),
+          items.map((item) => (item._id === id ? updatedCard : item))
         );
       })
       .catch(console.error);
@@ -149,8 +149,27 @@ function App() {
       .catch(console.error);
   };
 
+
   useEffect(() => {
-    getItems().then(setClothingItems).catch(console.error);
+    if (!activeModal) return;
+
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, [activeModal]);
+
+  useEffect(() => {
+    getItems()
+      .then((items) => setClothingItems(items))
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -211,7 +230,9 @@ function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Profile
                   clothingItems={clothingItems.filter(
-                    (i) => i.owner === currentUser._id,
+                    (i) =>
+                      i.owner === currentUser._id ||
+                      i.owner?._id === currentUser._id
                   )}
                   onAddClick={() => setActiveModal("add")}
                   onCardClick={handleCardClick}
@@ -256,7 +277,7 @@ function App() {
 
         <AddItemModal
           isOpen={activeModal === "add"}
-          onCloseModal={handleCloseModal}
+          onClose={handleCloseModal} // 🔥 FIXED
           onAddItem={handleAddItem}
         />
       </CurrentTemperatureUnitContext.Provider>

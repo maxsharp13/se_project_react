@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 
-function AddItemModal({ isOpen, onCloseModal, onAddItem }) {
+function AddItemModal({ isOpen, onClose, onAddItem }) {
   const { values, handleChange, resetForm } = useForm({
     name: "",
     imageUrl: "",
@@ -15,11 +15,11 @@ function AddItemModal({ isOpen, onCloseModal, onAddItem }) {
 
   return (
     <ModalWithForm
-      name="add-garment"
+      name="add"
       title="New garment"
       buttonText="Add garment"
       isOpen={isOpen}
-      onClose={onCloseModal}
+      onClose={onClose} 
       onSubmit={handleSubmit}
     >
       <label className="modal__label">
@@ -46,8 +46,10 @@ function AddItemModal({ isOpen, onCloseModal, onAddItem }) {
         />
       </label>
 
-      <div className="modal__radio-group">
-        <label>
+      <fieldset className="modal__fieldset">
+        <legend className="modal__legend">Select the weather type:</legend>
+
+        <label className="modal__radio-label">
           <input
             type="radio"
             name="weather"
@@ -58,7 +60,7 @@ function AddItemModal({ isOpen, onCloseModal, onAddItem }) {
           Hot
         </label>
 
-        <label>
+        <label className="modal__radio-label">
           <input
             type="radio"
             name="weather"
@@ -69,7 +71,7 @@ function AddItemModal({ isOpen, onCloseModal, onAddItem }) {
           Warm
         </label>
 
-        <label>
+        <label className="modal__radio-label">
           <input
             type="radio"
             name="weather"
@@ -79,7 +81,7 @@ function AddItemModal({ isOpen, onCloseModal, onAddItem }) {
           />
           Cold
         </label>
-      </div>
+      </fieldset>
     </ModalWithForm>
   );
 }
