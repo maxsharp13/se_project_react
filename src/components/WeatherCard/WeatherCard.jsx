@@ -3,9 +3,12 @@ import "./WeatherCard.css";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function WeatherCard({ temperature }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(
+    CurrentTemperatureUnitContext
+  );
 
-  const displayTemp = temperature && temperature[currentTemperatureUnit];
+  const displayTemp =
+    temperature && temperature[currentTemperatureUnit];
 
   return (
     <section className="weather-card">

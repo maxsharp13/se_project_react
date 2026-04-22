@@ -4,8 +4,16 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 
-function Main({ clothingItems, onCardClick, weather, onCardLike, isLoggedIn }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+function Main({
+  clothingItems,
+  onCardClick,
+  weather,
+  onCardLike,
+  isLoggedIn,
+}) {
+  const { currentTemperatureUnit } = useContext(
+    CurrentTemperatureUnitContext
+  );
 
   const filteredItems = clothingItems.filter((item) => {
     return item.weather === weather.condition;
@@ -13,10 +21,11 @@ function Main({ clothingItems, onCardClick, weather, onCardLike, isLoggedIn }) {
 
   return (
     <main className="main">
-      <WeatherCard weather={weather} />
+ 
+      <WeatherCard temperature={weather?.temperature} />
 
       <p className="main__description">
-        Today is {weather.temperature?.[currentTemperatureUnit]}°{" "}
+        Today is {weather?.temperature?.[currentTemperatureUnit]}°
         {currentTemperatureUnit} / You may want to wear:
       </p>
 
