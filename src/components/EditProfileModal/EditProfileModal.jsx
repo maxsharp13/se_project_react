@@ -1,28 +1,24 @@
-import { useEffect, useContext } from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
+import { useEffect } from "react";
 
-function EditProfileModal({ isOpen, onClose, onUpdateProfile }) {
-  const currentUser = useContext(CurrentUserContext);
-
-  const { values, handleChange, setFormValues } = useForm({
+function EditProfileModal({ isOpen, onClose, onUpdateUser, currentUser }) {
+  const { values, handleChange, resetForm } = useForm({
     name: "",
     avatar: "",
   });
 
   useEffect(() => {
-    if (currentUser) {
-      setFormValues({
-        name: currentUser.name || "",
-        avatar: currentUser.avatar || "",
-      });
+    if (currentUser && isOpen) {
+      handleChange({ target: { name: "name", value: currentUser.name } });
+      handleChange({ target: { name: "avatar", value: currentUser.avatar } });
     }
   }, [currentUser, isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateProfile(values);
+    onUpdateUser(values);
+    resetForm(); 
   };
 
   return (
@@ -31,27 +27,31 @@ function EditProfileModal({ isOpen, onClose, onUpdateProfile }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Save Changes"
+      buttonText="Save"
     >
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        className="modal__input"
-        required
-        value={values.name}
-        onChange={handleChange}
-      />
+      <label className="modal__label">
+        Name
+        <input
+          type="text"
+          name="name"
+          className="modal__input"
+          required
+          value={values.name}
+          onChange={handleChange}
+        />
+      </label>
 
-      <input
-        type="url"
-        name="avatar"
-        placeholder="Avatar URL"
-        className="modal__input"
-        required
-        value={values.avatar}
-        onChange={handleChange}
-      />
+      <label className="modal__label">
+        Avatar URL
+        <input
+          type="url"
+          name="avatar"
+          className="modal__input"
+          required
+          value={values.avatar}
+          onChange={handleChange}
+        />
+      </label>
     </ModalWithForm>
   );
 }

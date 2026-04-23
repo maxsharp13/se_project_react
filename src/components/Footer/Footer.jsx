@@ -3,8 +3,8 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <span>© Developed by Max Sharpnack</span>
-      <span>{new Date().getFullYear()}</span>
+      <p className="footer__text">© Developed by Max Sharpnack</p>
+      <p className="footer__year">{new Date().getFullYear()}</p>
     </footer>
   );
 }

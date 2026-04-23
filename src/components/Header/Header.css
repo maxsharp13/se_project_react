@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 28px;
+  padding: 0 40px;
 }
 
 .header__left {

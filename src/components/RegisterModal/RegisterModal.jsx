@@ -1,9 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
-import "./RegisterModal.css";
 
 function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
-  const { values, handleChange } = useForm({
+  const { values, handleChange, resetForm } = useForm({
     name: "",
     avatar: "",
     email: "",
@@ -13,6 +12,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onRegister(values);
+    resetForm(); 
   };
 
   return (
@@ -76,11 +76,11 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
       </label>
 
       <div className="modal__actions">
-        <button type="submit" className="modal__submit">
-          Sign Up
-        </button>
-
-        <button type="button" className="modal__switch" onClick={onLoginClick}>
+        <button
+          type="button"
+          className="modal__switch"
+          onClick={onLoginClick}
+        >
           or Log In
         </button>
       </div>
