@@ -3,14 +3,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 28px;
-  padding: 0 40px;
 }
 
-.header__left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
 
 .header__right {
   display: flex;
@@ -18,17 +12,32 @@
   gap: 20px;
 }
 
-.header__logo {
-  font-size: 20px;
-  font-weight: 700;
-  text-decoration: none;
-  color: #000;
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.header__date-location {
-  font-size: 16px;
-  font-weight: 500;
+
+.header__username {
+  font-size: 20px;
+  font-weight: 700;
 }
+
+
+.header__avatar,
+.header__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .header__add-button {
   font-size: 16px;
@@ -36,30 +45,4 @@
   border: none;
   background: none;
   cursor: pointer;
-}
-
-.header__add-button:hover {
-  opacity: 0.8;
-}
-
-.header__profile {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #000;
-}
-
-.header__username {
-  font-family: "CabinetGrotesk", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0;
-}
-
-.header__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }

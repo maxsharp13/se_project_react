@@ -26,27 +26,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   z-index: 2;
 }
 
 
 .card__name {
   background-color: #ffffff;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 500;
   margin: 0;
 }
 
 
 .card__like-button {
-  background: none;
+  position: absolute;
+  top: 14px;     
+  right: 14px;   
+  width: 18px;
+  height: 18px;
   border: none;
+  background: none;
   cursor: pointer;
-  font-size: 16px;
+  background-image: url("/like.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 3;
 }
 
 .card__like-button_active {
-  color: red;
+  background-image: url("/liked.svg");
+}
+
+.card__like-button:hover {
+  opacity: 0.7;
 }

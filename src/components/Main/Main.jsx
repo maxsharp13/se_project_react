@@ -5,9 +5,9 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { useContext } from "react";
 
 function Main({
-  clothingItems,
-  onCardClick,
+  clothingItems = [],
   weather,
+  onCardClick,   
   onCardLike,
   isLoggedIn,
 }) {
@@ -16,12 +16,11 @@ function Main({
   );
 
   const filteredItems = clothingItems.filter((item) => {
-    return item.weather === weather.condition;
+    return item.weather === weather?.condition;
   });
 
   return (
     <main className="main">
- 
       <WeatherCard temperature={weather?.temperature} />
 
       <p className="main__description">
@@ -34,7 +33,7 @@ function Main({
           <ItemCard
             key={item._id}
             item={item}
-            onCardClick={onCardClick}
+            onCardClick={onCardClick} 
             onCardLike={onCardLike}
             isLoggedIn={isLoggedIn}
           />

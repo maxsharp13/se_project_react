@@ -1,41 +1,44 @@
+import "./ToggleSwitch.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import "./ToggleSwitch.css";
 
 function ToggleSwitch() {
-  const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
-    CurrentTemperatureUnitContext,
-  );
+  const { currentTemperatureUnit, setCurrentTemperatureUnit } =
+    useContext(CurrentTemperatureUnitContext);
 
-  const isF = currentTemperatureUnit === "F";
+  const handleToggle = () => {
+    setCurrentTemperatureUnit(
+      currentTemperatureUnit === "F" ? "C" : "F"
+    );
+  };
 
   return (
-    <label className="toggle">
-      <input
-        type="checkbox"
-        className="toggle__input"
-        checked={!isF}
-        onChange={handleToggleSwitchChange}
-      />
+    <div className="toggle">
+      <span
+        className={`toggle__label ${
+          currentTemperatureUnit === "F" ? "toggle__label_active" : ""
+        }`}
+      >
+        F
+      </span>
 
-      <div className="toggle__slider">
-        <div
-          className={`toggle__circle ${
-            isF ? "toggle__circle--left" : "toggle__circle--right"
-          }`}
+      <label className="toggle__switch">
+        <input
+          type="checkbox"
+          checked={currentTemperatureUnit === "C"}
+          onChange={handleToggle}
         />
+        <span className="toggle__slider"></span>
+      </label>
 
-        <span className={`toggle__label ${isF ? "toggle__label--active" : ""}`}>
-          F
-        </span>
-
-        <span
-          className={`toggle__label ${!isF ? "toggle__label--active" : ""}`}
-        >
-          C
-        </span>
-      </div>
-    </label>
+      <span
+        className={`toggle__label ${
+          currentTemperatureUnit === "C" ? "toggle__label_active" : ""
+        }`}
+      >
+        C
+      </span>
+    </div>
   );
 }
 

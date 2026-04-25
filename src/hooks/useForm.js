@@ -19,7 +19,7 @@ function useForm(initialValues) {
   return {
     values,
     handleChange,
-    resetForm, 
+    resetForm,
   };
 }
 

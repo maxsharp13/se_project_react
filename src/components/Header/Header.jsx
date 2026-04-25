@@ -10,7 +10,6 @@ function Header({
   onAddClick,
   onRegisterClick,
   onLoginClick,
-  onSignOut,
   city,
   isLoggedIn,
 }) {
@@ -29,7 +28,7 @@ function Header({
     <header className="header">
       <div className="header__left">
         <Link to="/" className="header__logo">
-          <img src={logo} alt="WTWR logo" className="header__logo-image" />
+          <img src={logo} alt="WTWR logo" />
         </Link>
 
         <span className="header__date-location">
@@ -43,15 +42,16 @@ function Header({
         {isLoggedIn ? (
           <>
             <button
-              type="button"
               className="header__add-button"
               onClick={onAddClick}
             >
-              + Add Clothes
+              + Add clothes
             </button>
 
-            <Link to="/profile" className="header__profile">
-              <span className="header__username">{currentUser?.name}</span>
+            <div className="header__user">
+              <span className="header__username">
+                {currentUser?.name || "User"}
+              </span>
 
               {currentUser?.avatar ? (
                 <img
@@ -60,20 +60,17 @@ function Header({
                   className="header__avatar"
                 />
               ) : (
-                <div className="header__avatar-placeholder">{userInitial}</div>
+                <div className="header__avatar-placeholder">
+                  {userInitial}
+                </div>
               )}
-            </Link>
-
-            <button className="header__logout-button" onClick={onSignOut}>
-              Sign Out
-            </button>
+            </div>
           </>
         ) : (
           <>
             <button className="header__auth-button" onClick={onRegisterClick}>
               Sign Up
             </button>
-
             <button className="header__auth-button" onClick={onLoginClick}>
               Log In
             </button>
