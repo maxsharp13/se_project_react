@@ -12,28 +12,31 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
   return (
     <div className="modal modal_is-opened" onClick={onClose}>
       <div
-        className="modal__content modal__content_type_image"
+        className="item-modal" 
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
-          className="modal__close"
+          className="item-modal__close" 
           onClick={onClose}
-        >
-          ✕
-        </button>
+        />
 
         <img
           src={card.imageUrl}
           alt={card.name}
-          className="modal__image"
+          className="item-modal__image"
         />
 
-        <div className="modal__footer">
-          <p className="modal__caption">{card.name}</p>
+        <div className="item-modal__footer">
+          <div className="item-modal__text">
+            <h2 className="item-modal__title">{card.name}</h2>
+            <p className="item-modal__weather">
+              Weather: {card.weather}
+            </p>
+          </div>
 
           <button
-            className="modal__delete"
+            className="item-modal__delete"
             onClick={handleDeleteClick}
           >
             Delete item

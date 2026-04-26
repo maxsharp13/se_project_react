@@ -12,8 +12,18 @@ function ModalWithForm({
 
   return (
     <div className="modal modal_is-opened" onClick={onClose}>
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="modal__close" onClick={onClose} />
+      <div
+        className="modal__content"
+        onClick={(e) => e.stopPropagation()}
+      >
+  
+        <button
+          type="button"
+          className="modal__close"
+          onClick={onClose}
+        >
+          ✕
+        </button>
 
         <h2 className="modal__title">{title}</h2>
 

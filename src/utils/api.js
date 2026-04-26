@@ -1,7 +1,4 @@
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://api.YOURDOMAIN.com"
-    : "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -67,5 +64,13 @@ export const updateUserProfile = ({ name, avatar }, token) => {
       name,
       avatar,
     }),
+  }).then(checkResponse);
+};
+
+export const getUserInfo = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   }).then(checkResponse);
 };

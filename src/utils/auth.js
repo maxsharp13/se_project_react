@@ -1,30 +1,19 @@
 import { checkResponse } from "./api";
 
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://api.YOURDOMAIN.com"
-    : "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
 
-export const register = (data) => {
+export const register = (email, password, name, avatar) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ email, password, name, avatar }),
   }).then(checkResponse);
 };
 
-export const login = (data) => {
+export const login = (email, password) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  }).then(checkResponse);
-};
-
-export const checkToken = (token) => {
-  return fetch(`${baseUrl}/users/me`, {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
+    body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 };

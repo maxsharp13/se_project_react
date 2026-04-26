@@ -1,17 +1,18 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import useForm from "../../hooks/useForm";
+import { useState } from "react";
 
 function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
-    const { values, handleChange, resetForm } = useForm({
-        email: "",
-        password: "",
-      });
-      
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        onLogin(values);
-        resetForm();
-      };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onLogin({
+      email,
+      password,
+    });
+  };
 
   return (
     <ModalWithForm
@@ -26,10 +27,11 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
         <input
           type="email"
           name="email"
+          placeholder="Email"
           className="modal__input"
           required
-          value={values.email}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </label>
 
@@ -38,24 +40,26 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
         <input
           type="password"
           name="password"
+          placeholder="Password"
           className="modal__input"
           required
-          value={values.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </label>
 
+  
       <div className="modal__actions">
-        <button type="submit" className="modal__submit">
-          Log In
-        </button>
-
+        <span>or</span>
         <button
           type="button"
           className="modal__switch"
-          onClick={onRegisterClick}
+          onClick={() => {
+            onClose();
+            onRegisterClick();
+          }}
         >
-          or Sign Up
+          Sign Up
         </button>
       </div>
     </ModalWithForm>
