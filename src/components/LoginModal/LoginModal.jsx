@@ -1,17 +1,21 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import useForm from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { values, handleChange, resetForm } = useForm({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onLogin(values);
+    resetForm();
+  };
 
-    onLogin({
-      email,
-      password,
-    });
+  const handleRegisterClick = () => {
+    onClose();
+    onRegisterClick();
   };
 
   return (
@@ -30,8 +34,8 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           placeholder="Email"
           className="modal__input"
           required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email}
+          onChange={handleChange}
         />
       </label>
 
@@ -43,25 +47,18 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           placeholder="Password"
           className="modal__input"
           required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={values.password}
+          onChange={handleChange}
         />
       </label>
 
-  
-      <div className="modal__actions">
-        <span>or</span>
-        <button
-          type="button"
-          className="modal__switch"
-          onClick={() => {
-            onClose();
-            onRegisterClick();
-          }}
-        >
-          Sign Up
-        </button>
-      </div>
+      <button
+        type="button"
+        className="modal__switch"
+        onClick={handleRegisterClick}
+      >
+        or Sign Up
+      </button>
     </ModalWithForm>
   );
 }

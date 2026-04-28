@@ -1,10 +1,12 @@
 import "./Modal.css";
-import { useState } from "react";
+import useForm from "../../hooks/useForm";
 
 function AddItemModal({ isOpen, onClose, onAddItem }) {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
+  const { values, handleChange, resetForm } = useForm({
+    name: "",
+    imageUrl: "",
+    weather: "",
+  });
 
   if (!isOpen) return null;
 
@@ -13,16 +15,14 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
 
     onAddItem({
       _id: Date.now().toString(),
-      name,
-      imageUrl,
-      weather,
+      name: values.name,
+      imageUrl: values.imageUrl,
+      weather: values.weather,
       likes: [],
     });
 
+    resetForm(); 
     onClose();
-    setName("");
-    setImageUrl("");
-    setWeather("");
   };
 
   return (
@@ -38,32 +38,33 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
         <h2 className="modal__title">Add new clothing</h2>
 
         <form className="form" onSubmit={handleSubmit}>
- 
+  
           <label className="form__label">
             Name
             <input
               type="text"
+              name="name"              
               className="form__input"
               placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={values.name}
+              onChange={handleChange}
               required
             />
           </label>
 
-  
+      
           <label className="form__label">
             Image
             <input
               type="url"
+              name="imageUrl"       
               className="form__input"
               placeholder="Image URL"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
+              value={values.imageUrl}
+              onChange={handleChange}
               required
             />
           </label>
-
 
           <fieldset className="form__fieldset">
             <legend className="form__legend">
@@ -75,7 +76,8 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
                 type="radio"
                 name="weather"
                 value="hot"
-                onChange={(e) => setWeather(e.target.value)}
+                checked={values.weather === "hot"} 
+                onChange={handleChange}
               />
               Hot
             </label>
@@ -85,7 +87,8 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
                 type="radio"
                 name="weather"
                 value="warm"
-                onChange={(e) => setWeather(e.target.value)}
+                checked={values.weather === "warm"} 
+                onChange={handleChange}
               />
               Warm
             </label>
@@ -95,17 +98,21 @@ function AddItemModal({ isOpen, onClose, onAddItem }) {
                 type="radio"
                 name="weather"
                 value="cold"
-                onChange={(e) => setWeather(e.target.value)}
+                checked={values.weather === "cold"} 
+                onChange={handleChange}
               />
               Cold
             </label>
           </fieldset>
 
- 
           <button
             type="submit"
             className="form__submit"
-            disabled={!name || !imageUrl || !weather}
+            disabled={
+              !values.name ||
+              !values.imageUrl ||
+              !values.weather
+            }
           >
             Add garment
           </button>

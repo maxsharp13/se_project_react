@@ -18,7 +18,6 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, currentUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onUpdateUser(values);
-    resetForm(); 
   };
 
   return (

@@ -1,6 +1,12 @@
 import "./ItemModal.css";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+
+  const isLoggedIn = !!currentUser; 
+
   if (!isOpen || !card) return null;
 
   const handleDeleteClick = () => {
@@ -12,12 +18,12 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
   return (
     <div className="modal modal_is-opened" onClick={onClose}>
       <div
-        className="item-modal" 
+        className="item-modal"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
-          className="item-modal__close" 
+          className="item-modal__close"
           onClick={onClose}
         />
 
@@ -35,12 +41,14 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
             </p>
           </div>
 
-          <button
-            className="item-modal__delete"
-            onClick={handleDeleteClick}
-          >
-            Delete item
-          </button>
+          {isLoggedIn && (
+            <button
+              className="item-modal__delete"
+              onClick={handleDeleteClick}
+            >
+              Delete item
+            </button>
+          )}
         </div>
       </div>
     </div>

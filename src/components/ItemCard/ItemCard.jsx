@@ -32,7 +32,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
       <div className="card__header">
         <h2 className="card__name">{item.name}</h2>
 
-        {true && (
+        {isLoggedIn && (
           <button
             className={`card__like-button ${
               isLiked ? "card__like-button_active" : ""

@@ -1,8 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom"; 
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile"; 
 import Footer from "../Footer/Footer";
 
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -40,14 +42,12 @@ function App() {
     condition: "warm",
   };
 
-
   useEffect(() => {
     getItems()
       .then(setClothingItems)
       .catch(console.error);
   }, []);
 
- 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
 
@@ -63,7 +63,6 @@ function App() {
     }
   }, []);
 
-
   const handleLoginClick = () => setActiveModal("login");
   const handleRegisterClick = () => setActiveModal("register");
   const handleAddClick = () => setActiveModal("add-item");
@@ -72,7 +71,6 @@ function App() {
     setActiveModal("");
     setSelectedCard(null);
   };
-
 
   const handleLogin = ({ email, password }) => {
     login(email, password)
@@ -88,13 +86,11 @@ function App() {
       .catch(console.error);
   };
 
- 
   const handleRegister = ({ email, password, name, avatar }) => {
     register(email, password, name, avatar)
       .then(() => handleLogin({ email, password }))
       .catch(console.error);
   };
-
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
@@ -114,7 +110,6 @@ function App() {
       .catch(console.error);
   };
 
-
   const handleAddItem = (newItem) => {
     const token = localStorage.getItem("jwt");
 
@@ -125,7 +120,6 @@ function App() {
       })
       .catch(console.error);
   };
-
 
   const handleDeleteItem = (id) => {
     const token = localStorage.getItem("jwt");
@@ -140,7 +134,6 @@ function App() {
 
     closeActiveModal();
   };
-
 
   const handleCardClick = (item) => {
     setSelectedCard(item);
@@ -161,25 +154,43 @@ function App() {
             city="New York"
           />
 
-          <Main
-            clothingItems={clothingItems}
-            weather={weather}
-            isLoggedIn={isLoggedIn}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-          />
+  
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  clothingItems={clothingItems}
+                  weather={weather}
+                  isLoggedIn={isLoggedIn}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                />
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  isLoggedIn={isLoggedIn}
+                />
+              }
+            />
+          </Routes>
 
           <Footer />
 
-    
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLogin={handleLogin}
-            onRegisterClick={handleRegisterClick} 
+            onRegisterClick={handleRegisterClick}
           />
 
-    
           <RegisterModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
@@ -187,14 +198,12 @@ function App() {
             onLoginClick={handleLoginClick}
           />
 
-       
           <AddItemModal
             isOpen={activeModal === "add-item"}
             onClose={closeActiveModal}
             onAddItem={handleAddItem}
           />
 
-   
           <ItemModal
             isOpen={activeModal === "preview"}
             onClose={closeActiveModal}
