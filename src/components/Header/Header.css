@@ -5,26 +5,26 @@
   margin-bottom: 28px;
 }
 
-
 .header__right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-
 .header__user {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;  
+  color: #000;            
 }
-
 
 .header__username {
+  font-family: "Cabinet Grotesk", sans-serif; 
   font-size: 20px;
   font-weight: 700;
+  line-height: 24px;
 }
-
 
 .header__avatar,
 .header__avatar-placeholder {
@@ -38,11 +38,25 @@
   justify-content: center;
 }
 
-
 .header__add-button {
-  font-size: 16px;
-  font-weight: 700;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
   border: none;
   background: none;
   cursor: pointer;
+  padding: 0;
+}
+
+
+.header__auth-button {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
 }

@@ -16,6 +16,13 @@ function Profile({
 }) {
   const currentUser = useContext(CurrentUserContext);
 
+  
+  const userItems = clothingItems.filter(
+    (item) =>
+      item.owner === currentUser?._id ||
+      item.owner?._id === currentUser?._id
+  );
+
   return (
     <section className="profile">
       <SideBar
@@ -25,8 +32,8 @@ function Profile({
       />
 
       <ClothesSection
-        clothingItems={clothingItems}
-        onAddClick={onAddClick}
+        clothingItems={userItems} 
+        onAddClick={onAddClick}  
         onCardClick={onCardClick}
         onCardLike={onCardLike}
         isLoggedIn={isLoggedIn}

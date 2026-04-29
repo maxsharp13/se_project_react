@@ -5,9 +5,14 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 function ItemModal({ isOpen, onClose, card, onDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const isLoggedIn = !!currentUser; 
-
   if (!isOpen || !card) return null;
+
+
+  const isLoggedIn = !!currentUser;
+
+  const isOwn =
+    card.owner === currentUser?._id ||
+    card.owner?._id === currentUser?._id;
 
   const handleDeleteClick = () => {
     if (onDelete) {
@@ -41,7 +46,7 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
             </p>
           </div>
 
-          {isLoggedIn && (
+          {isLoggedIn && isOwn && (
             <button
               className="item-modal__delete"
               onClick={handleDeleteClick}

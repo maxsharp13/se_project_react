@@ -1,16 +1,17 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom"; 
+import { Routes, Route } from "react-router-dom";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Profile from "../Profile/Profile"; 
+import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 
 import AddItemModal from "../AddItemModal/AddItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
+
 
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -42,11 +43,13 @@ function App() {
     condition: "warm",
   };
 
+
   useEffect(() => {
     getItems()
       .then(setClothingItems)
       .catch(console.error);
   }, []);
+
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -63,14 +66,17 @@ function App() {
     }
   }, []);
 
+
   const handleLoginClick = () => setActiveModal("login");
   const handleRegisterClick = () => setActiveModal("register");
   const handleAddClick = () => setActiveModal("add-item");
+  const handleEditProfile = () => setActiveModal("edit-profile");
 
   const closeActiveModal = () => {
     setActiveModal("");
     setSelectedCard(null);
   };
+
 
   const handleLogin = ({ email, password }) => {
     login(email, password)
@@ -92,6 +98,13 @@ function App() {
       .catch(console.error);
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt"); 
+    setCurrentUser(null);           
+    setIsLoggedIn(false);           
+  };
+
+  
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
 
@@ -154,7 +167,7 @@ function App() {
             city="New York"
           />
 
-  
+      
           <Routes>
             <Route
               path="/"
@@ -177,6 +190,9 @@ function App() {
                   onCardClick={handleCardClick}
                   onCardLike={handleCardLike}
                   isLoggedIn={isLoggedIn}
+                  onAddClick={handleAddClick}
+                  onEditProfile={handleEditProfile} 
+                  onSignOut={handleSignOut}         
                 />
               }
             />
@@ -184,6 +200,7 @@ function App() {
 
           <Footer />
 
+          {/* 🔹 MODALS */}
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}

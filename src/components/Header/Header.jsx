@@ -48,7 +48,7 @@ function Header({
               + Add clothes
             </button>
 
-            <div className="header__user">
+            <Link to="/profile" className="header__user">
               <span className="header__username">
                 {currentUser?.name || "User"}
               </span>
@@ -64,14 +64,21 @@ function Header({
                   {userInitial}
                 </div>
               )}
-            </div>
+            </Link>
           </>
         ) : (
           <>
-            <button className="header__auth-button" onClick={onRegisterClick}>
+            <button
+              className="header__auth-button"
+              onClick={onRegisterClick}
+            >
               Sign Up
             </button>
-            <button className="header__auth-button" onClick={onLoginClick}>
+
+            <button
+              className="header__auth-button"
+              onClick={onLoginClick}
+            >
               Log In
             </button>
           </>

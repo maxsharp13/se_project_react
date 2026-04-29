@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
-  const { values, handleChange, resetForm } = useForm({
+  const { values, handleChange } = useForm({
     email: "",
     password: "",
   });
@@ -10,10 +10,9 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin(values);
-    resetForm();
   };
 
-  const handleRegisterClick = () => {
+  const handleRegisterSwitch = () => {
     onClose();
     onRegisterClick();
   };
@@ -24,18 +23,17 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Log In"
+      buttonText={null}
     >
       <label className="modal__label">
         Email
         <input
           type="email"
           name="email"
-          placeholder="Email"
           className="modal__input"
-          required
           value={values.email}
           onChange={handleChange}
+          required
         />
       </label>
 
@@ -44,21 +42,27 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
         <input
           type="password"
           name="password"
-          placeholder="Password"
           className="modal__input"
-          required
           value={values.password}
           onChange={handleChange}
+          required
         />
       </label>
 
-      <button
-        type="button"
-        className="modal__switch"
-        onClick={handleRegisterClick}
-      >
-        or Sign Up
-      </button>
+   
+      <div className="modal__actions">
+        <button type="submit" className="modal__submit">
+          Log In
+        </button>
+
+        <button
+          type="button"
+          className="modal__switch"
+          onClick={handleRegisterSwitch}
+        >
+          or Sign Up
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

@@ -32,7 +32,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Sign Up"
+      buttonText={null}
     >
       <label className="modal__label">
         Name

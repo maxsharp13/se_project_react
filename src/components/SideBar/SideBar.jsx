@@ -1,26 +1,40 @@
 import "./SideBar.css";
 
 function SideBar({ user, onEditProfile, onSignOut }) {
-  const userInitial = user?.name ? user.name[0].toUpperCase() : "U";
-
   return (
-    <aside className="sidebar">
-      {user?.avatar ? (
-        <img src={user.avatar} alt="User avatar" className="sidebar__avatar" />
-      ) : (
-        <div className="sidebar__avatar-placeholder">{userInitial}</div>
-      )}
+    <div className="sidebar">
+      <div className="sidebar__user">
+        {user?.avatar ? (
+          <img
+            src={user.avatar}
+            alt="User avatar"
+            className="sidebar__avatar"
+          />
+        ) : (
+          <div className="sidebar__avatar-placeholder">
+            {user?.name?.[0] || "U"}
+          </div>
+        )}
 
-      <p className="sidebar__username">{user?.name || "User"}</p>
+        <p className="sidebar__username">
+          {user?.name || "User"}
+        </p>
+      </div>
 
-      <button className="sidebar__edit-button" onClick={onEditProfile}>
-        Edit Profile
+      <button
+        className="sidebar__edit-button"
+        onClick={onEditProfile}
+      >
+        Change profile data
       </button>
 
-      <button className="sidebar__logout-button" onClick={onSignOut}>
-        Sign Out
+      <button
+        className="sidebar__logout-button"
+        onClick={onSignOut}
+      >
+        Log out
       </button>
-    </aside>
+    </div>
   );
 }
 
