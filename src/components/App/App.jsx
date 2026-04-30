@@ -11,7 +11,8 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import ItemModal from "../ItemModal/ItemModal";
-
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -23,6 +24,7 @@ import {
   addCardLike,
   removeCardLike,
   getUserInfo,
+  updateUserProfile, 
 } from "../../utils/api";
 
 import { login, register } from "../../utils/auth";
@@ -43,7 +45,7 @@ function App() {
     condition: "warm",
   };
 
-
+  
   useEffect(() => {
     getItems()
       .then(setClothingItems)
@@ -66,7 +68,7 @@ function App() {
     }
   }, []);
 
-
+  // 🔹 Modal controls
   const handleLoginClick = () => setActiveModal("login");
   const handleRegisterClick = () => setActiveModal("register");
   const handleAddClick = () => setActiveModal("add-item");
@@ -99,12 +101,24 @@ function App() {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem("jwt"); 
-    setCurrentUser(null);           
-    setIsLoggedIn(false);           
+    localStorage.removeItem("jwt");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
   };
 
-  
+
+  const handleUpdateUser = (data) => {
+    const token = localStorage.getItem("jwt");
+
+    updateUserProfile(data, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
 
@@ -123,6 +137,7 @@ function App() {
       .catch(console.error);
   };
 
+
   const handleAddItem = (newItem) => {
     const token = localStorage.getItem("jwt");
 
@@ -133,6 +148,7 @@ function App() {
       })
       .catch(console.error);
   };
+
 
   const handleDeleteItem = (id) => {
     const token = localStorage.getItem("jwt");
@@ -167,7 +183,7 @@ function App() {
             city="New York"
           />
 
-      
+   
           <Routes>
             <Route
               path="/"
@@ -182,25 +198,28 @@ function App() {
               }
             />
 
+     
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
-                  isLoggedIn={isLoggedIn}
-                  onAddClick={handleAddClick}
-                  onEditProfile={handleEditProfile} 
-                  onSignOut={handleSignOut}         
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItems={clothingItems}
+                    onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
+                    onAddClick={handleAddClick}
+                    onEditProfile={handleEditProfile}
+                    onSignOut={handleSignOut}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
 
           <Footer />
 
-          {/* 🔹 MODALS */}
+ 
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
@@ -226,6 +245,13 @@ function App() {
             onClose={closeActiveModal}
             card={selectedCard}
             onDelete={handleDeleteItem}
+          />
+
+    
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onUpdateUser={handleUpdateUser}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
