@@ -6,10 +6,10 @@ function useForm(initialValues) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setValues((prevValues) => ({
-      ...prevValues,
+    setValues({
+      ...values,
       [name]: value,
-    }));
+    });
   };
 
   const resetForm = () => {
@@ -20,6 +20,7 @@ function useForm(initialValues) {
     values,
     handleChange,
     resetForm,
+    setValues, 
   };
 }
 

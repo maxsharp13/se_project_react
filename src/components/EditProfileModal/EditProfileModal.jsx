@@ -1,19 +1,26 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useForm from "../../hooks/useForm";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function EditProfileModal({ isOpen, onClose, onUpdateUser, currentUser }) {
-  const { values, handleChange, resetForm } = useForm({
+function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
+
+  const currentUser = useContext(CurrentUserContext);
+
+  const { values, handleChange, setValues } = useForm({
     name: "",
     avatar: "",
   });
 
+
   useEffect(() => {
     if (currentUser && isOpen) {
-      handleChange({ target: { name: "name", value: currentUser.name } });
-      handleChange({ target: { name: "avatar", value: currentUser.avatar } });
+      setValues({
+        name: currentUser.name || "",
+        avatar: currentUser.avatar || "",
+      });
     }
-  }, [currentUser, isOpen]);
+  }, [currentUser, isOpen, setValues]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,11 +29,11 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, currentUser }) {
 
   return (
     <ModalWithForm
-      title="Edit Profile"
+      title="Change profile data"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Save"
+      buttonText="Save changes"
     >
       <label className="modal__label">
         Name
@@ -34,9 +41,9 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, currentUser }) {
           type="text"
           name="name"
           className="modal__input"
-          required
           value={values.name}
           onChange={handleChange}
+          required
         />
       </label>
 
@@ -46,9 +53,9 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, currentUser }) {
           type="url"
           name="avatar"
           className="modal__input"
-          required
           value={values.avatar}
           onChange={handleChange}
+          required
         />
       </label>
     </ModalWithForm>
