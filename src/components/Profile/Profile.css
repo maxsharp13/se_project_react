@@ -3,3 +3,11 @@
   gap: 40px;
   align-items: flex-start;
 }
+
+.sidebar {
+  min-width: 250px;         
+}
+
+.clothes-section {
+  flex: 1;                
+}
