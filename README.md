@@ -1,25 +1,35 @@
-# WTWR — What To Wear (React)
+# WTWR — What To Wear (Full Stack)
 
-WTWR is a React-based application that helps users decide what to wear
-based on current weather conditions. The app fetches real-time weather
-data from the OpenWeather API and filters clothing items so users get
-smart outfit recommendations for the day.
+WTWR is a full-stack application that helps users decide what to wear based on current weather conditions. The app integrates a React frontend with an Express/MongoDB backend and uses authentication to manage user-specific clothing items.
 
 ## Features
 
-- Interactive clothing cards with preview modal
-- Modal form for adding new garments (UI only)
-- ESC key & overlay click to close modals
+- User authentication (sign up / log in with JWT)
+- Add, delete, and like clothing items
+- Protected profile route
+- Edit user profile (name & avatar)
+- Interactive clothing cards with modal preview
 - Responsive layout based on Figma designs
-- Environment variables used for API keys
+- API integration with backend server
 
 ## Tech Stack
 
+Frontend:
 - React
 - Vite
 - JavaScript (ES6+)
 - CSS (BEM methodology)
-- OpenWeather API
 
+Backend:
+- Node.js
+- Express
+- MongoDB (Mongoose)
+- JWT Authentication
+
+## Project Links
+
+Frontend Repo:
 https://github.com/maxsharp13/se_project_react
-https://github.com/maxsharp13/se_project_express.git
+
+Backend Repo:
+https://github.com/maxsharp13/se_project_express

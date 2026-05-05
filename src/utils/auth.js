@@ -1,6 +1,6 @@
 import { checkResponse } from "./api";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://api.w2wrmax.mooo.com";
 
 export const register = (email, password, name, avatar) => {
   return fetch(`${baseUrl}/signup`, {

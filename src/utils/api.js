@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://api.w2wrmax.mooo.com";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -16,7 +16,7 @@ export const addItem = ({ name, weather, imageUrl }, token) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
